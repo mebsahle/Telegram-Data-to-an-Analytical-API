@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: fct_messages
+    description: "Fact table for Telegram messages"
+    columns:
+      - name: id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+
+      - name: message_date
+        description: "Date of the message"
+        tests:
+          - not_null
+
+      - name: channel_name
+        description: "Channel where message was posted"
+        tests:
+          - not_null
+
+  - name: dim_channels
+    description: "List of unique channels"
+    columns:
+      - name: channel_name
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_dates
+    description: "List of distinct message dates"
+    columns:
+      - name: date
+        tests:
+          - not_null
+          - unique

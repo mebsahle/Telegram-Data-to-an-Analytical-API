@@ -1,0 +1,12 @@
+telegram_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: db
+      user: mebsahle
+      password: psql
+      port: 5432
+      dbname: kara_solutions
+      schema: dbt_public
+      threads: 1
