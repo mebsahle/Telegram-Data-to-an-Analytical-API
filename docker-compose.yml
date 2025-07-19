@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: kara_solutions
+      POSTGRES_USER: mebsahle
+      POSTGRES_PASSWORD: psql
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    command: tail -f /dev/null
+
+volumes:
+  pg_data:
