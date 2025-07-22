@@ -152,7 +152,30 @@ scraper_session.session
 ehthumbs.db
 Thumbs.db
 
-# Project specific
-# data/raw/
+# Project specific data and models
+data/raw/
+data/enriched/
+data/processed/
+data/temp/
+data/staging/
+data/backup/
+data/archive/
+data/exports/
+
+# ML Models and weights
+*.pt
+*.pth
+*.model
+*.pkl
+*.joblib
+*.h5
+*.onnx
+*.pb
+yolov8n.pt
+models/
+checkpoints/
+weights/
+
+# Logs
 logs/
 *.log
