@@ -3,11 +3,17 @@ python-dotenv
 psycopg2-binary
 sqlalchemy
 dbt-postgres
-ultralytics
-fastapi
-uvicorn
-dagster
-dagster-webserver
-pydantic
 ultralytics>=8.0.20
 opencv-python-headless
+
+# FastAPI and web dependencies
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0.0
+python-multipart
+
+# Additional utilities
+dagster
+dagster-webserver
+requests
+Pillow
