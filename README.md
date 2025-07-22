@@ -24,34 +24,38 @@ This pipeline implements a modern data engineering stack:
 
 ```
 
-telegram\_pipeline\_project/
-├── ingestion/
-│   ├── scraper.py
-│   ├── logger.py
-│   └── **init**.py
-├── utils/
-│   ├── config.py
-│   ├── helpers.py
-│   └── **init**.py
+telegram_pipeline_project/
+├── enrichment/                        # New folder for enrichment logic
+│   ├── yolo_inference.py             # Runs YOLOv8 on Telegram images
+│   ├── store_detections.py           # Stores YOLO results into PostgreSQL
+│   └── __init__.py
+│
 ├── data/
-│   └── raw/
-│       └── telegram\_messages/
-├── telegram\_dbt/                # dbt project
+│   ├── raw/                          # Scraped Telegram message data
+│   │   └── telegram_messages/
+│   └── enriched/                     # New folder for enriched outputs
+│       └── detections.json           # YOLO object detection results
+│
+├── utils/
+│   ├── config.py                     # Updated to include DB connection helper
+│   ├── helpers.py
+│   └── __init__.py
+│
+├── telegram_dbt/
 │   ├── models/
-│   │   ├── staging/
-│   │   │   └── stg\_telegram\_messages.sql
-│   │   ├── marts/
-│   │   │   ├── dim\_channels.sql
-│   │   │   ├── dim\_dates.sql
-│   │   │   └── fct\_messages.sql
-│   │   └── schema.yml
-│   ├── dbt\_project.yml
-│   └── ...
+│   │   └── staging/
+│   │       └── stg_telegram_messages.sql
+│   │   └── marts/
+│   │       ├── dim_channels.sql
+│   │       ├── dim_dates.sql
+│   │       └── fct_messages.sql
+│   └── schema.yml
+│
 ├── .env
-├── .gitignore
 ├── Dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
+├── .gitignore
 └── README.md
 
 ````
